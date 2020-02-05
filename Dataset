@@ -1,0 +1,18 @@
+Dataset: images.zip
+Dataset já normalizado: dataset_normalizado.zip
+
+Resultados Sequêncial:
+Epoch 1/10
+7384/7384 [==============================] - 83s 11ms/sample - loss: 3.5075 - acc: 0.0619
+Epoch 2/10
+7384/7384 [==============================] - 83s 11ms/sample - loss: 3.1483 - acc: 0.1450
+Epoch 3/10
+7384/7384 [==============================] - 82s 11ms/sample - loss: 2.6492 - acc: 0.2723
+Epoch 4/10
+7384/7384 [==============================] - 83s 11ms/sample - loss: 1.9704 - acc: 0.4515
+Epoch 5/10
+7384/7384 [==============================] - 84s 11ms/sample - loss: 1.1434 - acc: 0.6751
+Epoch 6/10
+7384/7384 [==============================] - 84s 11ms/sample - loss: 0.5083 - acc: 0.8596
+Epoch 7/10
+7384/7384 [==============================] - 84s 11ms/sample - loss: 0.2007 - acc: 0.9491
