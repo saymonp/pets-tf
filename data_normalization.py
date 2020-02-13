@@ -20,12 +20,14 @@ class DataManager(object):
         Mostra a imagem normalizada
         """
         img_array = []
+
         for category in self.CATEGORIES:
             path = os.path.join(self.DATADIR, category)
             for img in os.listdir(path):
                 img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)
                 break
             break
+
         new_array = cv2.resize(img_array, (self.IMG_SIZE, self.IMG_SIZE))
         plt.imshow(new_array, cmap="gray")
         plt.show()
@@ -33,10 +35,12 @@ class DataManager(object):
 
     def normalize_data(self) -> List:
         training_data = []
+
         for category in self.CATEGORIES:
             print("Category " + category)
             path = os.path.join(self.DATADIR, category)
             class_num = self.CATEGORIES.index(category)
+
             for img in os.listdir(path):
                 try:
                     img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)
@@ -44,13 +48,14 @@ class DataManager(object):
                     training_data.append([new_array, class_num])
                 except Exception as e:
                     pass
+
         return training_data
 
     def create_training_data(self):
         """
         Gera os arquivos x.pickle e y.pickle prontos para o treinamento
         """
-        training_data = self.create_training_data()
+        training_data = self.normalize_data()
         random.shuffle(training_data)
 
         x = []
@@ -85,5 +90,6 @@ if __name__ == "__main__":
                   'Wheaten_Terrier', 'Yorkshire_Terrier']
 
     data_manager = DataManager(IMG_SIZE, DATADIR, CATEGORIES)
-    # data_manager.normalize_data()
-    data_manager.test()
+
+    data_manager.create_training_data()
+    # data_manager.test()
