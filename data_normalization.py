@@ -85,4 +85,5 @@ if __name__ == "__main__":
                   'Wheaten_Terrier', 'Yorkshire_Terrier']
 
     data_manager = DataManager(IMG_SIZE, DATADIR, CATEGORIES)
-    data_manager.normalize_data()
+    # data_manager.normalize_data()
+    data_manager.test()
