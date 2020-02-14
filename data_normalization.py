@@ -91,5 +91,5 @@ if __name__ == "__main__":
 
     data_manager = DataManager(IMG_SIZE, DATADIR, CATEGORIES)
 
-    data_manager.create_training_data()
-    # data_manager.test()
+    # data_manager.create_training_data()
+    data_manager.test()
