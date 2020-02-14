@@ -24,14 +24,14 @@ class DataManager(object):
         for category in self.CATEGORIES:
             path = os.path.join(self.DATADIR, category)
             for img in os.listdir(path):
-                img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)
+                img_array = cv2.imread(os.path.join(
+                    path, img), cv2.IMREAD_GRAYSCALE)
                 break
             break
 
         new_array = cv2.resize(img_array, (self.IMG_SIZE, self.IMG_SIZE))
         plt.imshow(new_array, cmap="gray")
         plt.show()
-
 
     def normalize_data(self) -> List:
         training_data = []
@@ -43,8 +43,10 @@ class DataManager(object):
 
             for img in os.listdir(path):
                 try:
-                    img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)
-                    new_array = cv2.resize(img_array, (self.IMG_SIZE, self.IMG_SIZE))
+                    img_array = cv2.imread(os.path.join(
+                        path, img), cv2.IMREAD_GRAYSCALE)
+                    new_array = cv2.resize(
+                        img_array, (self.IMG_SIZE, self.IMG_SIZE))
                     training_data.append([new_array, class_num])
                 except Exception as e:
                     pass

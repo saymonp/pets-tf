@@ -40,4 +40,5 @@ model.fit(x, y, batch_size=16, epochs=7)
 scores = model.evaluate(x, y)
 print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1] * 100))
 
-model.save(f"{scores[1]*100}{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_model.h5")
+model.save(
+    f"{scores[1]*100}{datetime.utcnow().strftime('%Y%m%d%H%M%S')}_model.h5")
