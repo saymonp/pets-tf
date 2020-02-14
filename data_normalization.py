@@ -18,6 +18,9 @@ class DataManager(object):
     def test(self):
         """
         Mostra a imagem normalizada
+
+        Torna a imagem em preto e branco
+        Redimensiona o tamanho da imagem
         """
         img_array = []
 

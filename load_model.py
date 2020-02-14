@@ -11,6 +11,7 @@ logger.setLevel(logging.CRITICAL)
 CATEGORIES = ['Abyssian', 'American_bulldog', 'American_pit_bull', 'Basset_hound', 'Beagle', 'Bengal', 'Birdman', 'Bombay', 'Boxer', 'British_Shorthair', 'Chihuahua', 'Egyptian_Mau', 'English_Cocker_Spaniel', 'English_Setter', 'German_Shorthaired', 'Great_Pyrenees', 'Havanese', 'Japanese_Chin',
               'Keeshond', 'Leonberger', 'Maine_Coon', 'Miniature_Pinscher', 'Newfoundland', 'Persian', 'Pomeranian', 'Pug', 'Ragdoll', 'Russian_Blue', 'Saint_Bernard', 'Samoyed', 'Scottish_Terrier', 'Shiba_Inu', 'Siamese', 'Sphynx', 'Staffordshire_Bull_Terrier', 'Wheaten_Terrier', 'Yorkshire_Terrier']
 
+# Carrega o modelo
 model = load_model('98.1581807136535620200213231827_model.h5')
 model.summary()
 
@@ -23,7 +24,7 @@ img = pickle.load(open("x.pickle", "rb"))[1]
 # Adiciona a imagem em um batch que possui um só membro.
 img = (np.expand_dims(img, 0))
 
-# Pede a predição
+# Faz a predição
 predictions_single = model.predict(img)
 # Predição da única imagem no batch:
 predicao = np.argmax(predictions_single[0])
