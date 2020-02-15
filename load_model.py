@@ -13,12 +13,11 @@ CATEGORIES = ['Abyssian', 'American_bulldog', 'American_pit_bull', 'Basset_hound
 
 # Carrega o modelo
 model = load_model('98.1581807136535620200213231827_model.h5')
-model.summary()
 
 # Pega a label
-label = pickle.load(open("y.pickle", "rb"))[1]
+label = pickle.load(open("y.pickle", "rb"))[2]
 # Pega uma imagem do dataset normalizado
-img = pickle.load(open("x.pickle", "rb"))[1]
+img = pickle.load(open("x.pickle", "rb"))[2]
 
 # Modelos so keras são otimizados para fazer predições em um batch, ou coleções
 # Adiciona a imagem em um batch que possui um só membro.

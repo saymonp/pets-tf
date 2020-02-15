@@ -61,10 +61,12 @@ class DataManager(object):
         Gera os arquivos x.pickle e y.pickle prontos para o treinamento
         """
         training_data = self.normalize_data()
+
+        # Embaralha as fotos
         random.shuffle(training_data)
 
-        x = []
-        y = []
+        x = [] # Features
+        y = [] # Labels
 
         for features, label in training_data:
             x.append(features)
@@ -72,6 +74,7 @@ class DataManager(object):
 
         x = np.array(x).reshape(-1, self.IMG_SIZE, self.IMG_SIZE, 1)
 
+        # Salva os dados prontos para o treinamento
         pickle_out = open("x.pickle", "wb")
         pickle.dump(x, pickle_out)
         pickle_out.close()
@@ -96,5 +99,5 @@ if __name__ == "__main__":
 
     data_manager = DataManager(IMG_SIZE, DATADIR, CATEGORIES)
 
-    # data_manager.create_training_data()
-    data_manager.test()
+    data_manager.create_training_data()
+    # data_manager.test()
