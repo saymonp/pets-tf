@@ -18,20 +18,23 @@ class DataManager(object):
     def test(self):
         """
         Mostra a imagem normalizada
+
+        Torna a imagem em preto e branco
+        Redimensiona o tamanho da imagem
         """
         img_array = []
 
         for category in self.CATEGORIES:
             path = os.path.join(self.DATADIR, category)
             for img in os.listdir(path):
-                img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)
+                img_array = cv2.imread(os.path.join(
+                    path, img), cv2.IMREAD_GRAYSCALE)
                 break
             break
 
         new_array = cv2.resize(img_array, (self.IMG_SIZE, self.IMG_SIZE))
         plt.imshow(new_array, cmap="gray")
         plt.show()
-
 
     def normalize_data(self) -> List:
         training_data = []
@@ -43,8 +46,10 @@ class DataManager(object):
 
             for img in os.listdir(path):
                 try:
-                    img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)
-                    new_array = cv2.resize(img_array, (self.IMG_SIZE, self.IMG_SIZE))
+                    img_array = cv2.imread(os.path.join(
+                        path, img), cv2.IMREAD_GRAYSCALE)
+                    new_array = cv2.resize(
+                        img_array, (self.IMG_SIZE, self.IMG_SIZE))
                     training_data.append([new_array, class_num])
                 except Exception as e:
                     pass
@@ -56,10 +61,12 @@ class DataManager(object):
         Gera os arquivos x.pickle e y.pickle prontos para o treinamento
         """
         training_data = self.normalize_data()
+
+        # Embaralha as fotos
         random.shuffle(training_data)
 
-        x = []
-        y = []
+        x = [] # Features
+        y = [] # Labels
 
         for features, label in training_data:
             x.append(features)
@@ -67,6 +74,7 @@ class DataManager(object):
 
         x = np.array(x).reshape(-1, self.IMG_SIZE, self.IMG_SIZE, 1)
 
+        # Salva os dados prontos para o treinamento
         pickle_out = open("x.pickle", "wb")
         pickle.dump(x, pickle_out)
         pickle_out.close()
@@ -91,5 +99,5 @@ if __name__ == "__main__":
 
     data_manager = DataManager(IMG_SIZE, DATADIR, CATEGORIES)
 
-    # data_manager.create_training_data()
-    data_manager.test()
+    data_manager.create_training_data()
+    # data_manager.test()
